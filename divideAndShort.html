@@ -1,0 +1,32 @@
+<script>
+  divideAndShort(5956560159466056);
+
+  function divideAndShort(num){    
+    var tempArray = []; //Array untuk menyimpan data angka sementara
+    var numArray = num.toString().split(''); //Array yang diambil dari data angka parameter num
+    var finalNum = ''; 
+
+    for(i=0;i<numArray.length;i++){                
+        //Jika numArray index i merupakan 0
+        if(numArray[i] == 0){            
+            tempArray.sort((a,b) => a-b); //Melakukan sort data array secara Ascending
+            finalNum += tempArray.join(''); //Menambah variable finalNum dengan tempArray yang sudah dijoin menjadi String
+            tempArray = []; //Mereset variabel tempArray
+        }
+        //Mengecek apakah i = index terahir dari numArray
+        else if(i == (numArray.length-1)){
+            //Jika index terahir bukan berisi angka 0
+            if(numArray[i] !== 0){
+                tempArray[i] = numArray[i];
+            }
+            tempArray.sort((a,b) => a-b); //Melakukan sort data array secara Ascending
+            finalNum += tempArray.join(''); //Menambah variable finalNum dengan tempArray yang sudah dijoin menjadi String
+            tempArray = []; //Mereset variabel tempArray
+        }else{
+            tempArray[i] = numArray[i]; //Mengisi tempArray[i] dengan numArray[i] ketika numArray[i] bukan berisi angka 0
+        }
+    }
+
+    console.log(finalNum);
+  }  
+</script>
